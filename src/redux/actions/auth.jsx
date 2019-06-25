@@ -1,0 +1,23 @@
+import {
+    LOGIN_SUCCESS,
+    LOGIN_FAIL
+} from '../constants'
+
+import http from '../../services/httpService'
+import { apiUrl } from '../../config.json'
+
+export const login = ({email, password}) => async dispatch =>{
+    const apiEndPoint = apiUrl + "auth" 
+    
+    try{
+        const response = await http.post(apiEndPoint, {email, password})
+       
+        dispatch({
+            type: LOGIN_SUCCESS,
+            payload: response.data
+        })
+   }
+   catch(err){
+
+   }
+}
