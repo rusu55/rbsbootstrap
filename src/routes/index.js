@@ -7,7 +7,12 @@ import Leads from '../components/pages/leads/Leads'
 import Jobs from '../components/pages/jobs/Jobs'
 import Tasks from '../components/pages/tasks/Tasks'
 import Landing from '../components/pages/landing/Landing'
-import PrivateRoute from '../components/commons/utils/privateRoute';
+import Vendors from '../components/pages/vendors/vendors'
+import Contracts from '../components/pages/contracts/Contracts'
+import Payments from '../components/pages/payments/Payments'
+import Clients from '../components/pages/clients/Clients'
+import Calendar from '../components/pages/calendar/Calendar'
+import PrivateRoute from '../components/commons/utils/privateRoute'
 
 const Routes = () =>(
     <Switch>
@@ -16,6 +21,11 @@ const Routes = () =>(
          <PrivateRoute path="/leads" component={Leads} />
          <PrivateRoute path="/jobs" component={Jobs} />
          <PrivateRoute path="/tasks" component={Tasks} />
+         <PrivateRoute path="/vendors" component={Vendors} />
+         <PrivateRoute path="/contracts" component={Contracts} />
+         <PrivateRoute path="/payments" component={Payments} />
+         <PrivateRoute path="/clients" component={Clients} />
+         <PrivateRoute path="/calendar" component={Calendar} />
     </Switch>   
 )
 

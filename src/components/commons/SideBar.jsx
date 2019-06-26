@@ -27,7 +27,7 @@ const SideBar = ({ auth: {isAuthenticated, loading}, sidebar}) =>{
                                             </NavLink>
                                         </li>
                                         <li className="sidebar-item">
-                                            <NavLink className="sidebar-link" to="/vendors">
+                                            <NavLink className="sidebar-link" to="/clients">
                                                 <i className="align-middle fas fa-user-friends"></i> <span className="align-middle">Clients</span>
                                             </NavLink>
                                         </li>
@@ -37,22 +37,27 @@ const SideBar = ({ auth: {isAuthenticated, loading}, sidebar}) =>{
                                             </NavLink>
                                         </li>	
                                         <li className="sidebar-item">
-                                            <NavLink className="sidebar-link" to="/todos">
+                                            <NavLink className="sidebar-link" to="/tasks">
                                                 <i className="align-middle far fa-list-alt"></i> <span className="align-middle">To Do List</span>
                                             </NavLink>
                                         </li>
                                         <li className="sidebar-item">
-                                            <NavLink className="sidebar-link" to="/vendors">
+                                            <NavLink className="sidebar-link" to="/calendar">
                                                 <i className="align-middle far fa-calendar-alt"></i> <span className="align-middle">Events Calendar</span>
                                             </NavLink>
                                         </li>
                                         <li className="sidebar-item">
-                                            <NavLink className="sidebar-link" to="/vendors">
+                                            <NavLink className="sidebar-link" to="/jobs">
+                                                <i className="align-middle fa fa-users"></i> <span className="align-middle">Jobs</span>
+                                            </NavLink>
+                                        </li>
+                                        <li className="sidebar-item">
+                                            <NavLink className="sidebar-link" to="/contracts">
                                                 <i className="align-middle fa fa-users"></i> <span className="align-middle">Contracts</span>
                                             </NavLink>
                                         </li>
                                         <li className="sidebar-item">
-                                            <NavLink className="sidebar-link" to="/vendors">
+                                            <NavLink className="sidebar-link" to="/payments">
                                                 <i className="align-middle fa fa-users"></i> <span className="align-middle">Payments</span>
                                             </NavLink>
                                         </li>				
