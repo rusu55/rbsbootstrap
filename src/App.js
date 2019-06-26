@@ -5,13 +5,17 @@ import ReduxToastr from "react-redux-toastr"
 
 import store from "./redux/store/"
 import Routes from './routes/'
+import TopNavBar from './components/commons/NavBar'
+import SideNavBar from './components/commons/SideBar'
 
 function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
          <div className="wrapper">
-          <div className="main">      
+            <SideNavBar />
+          <div className="main">
+              <TopNavBar />  
               <Routes/>
               <ReduxToastr
                 timeOut={5000}

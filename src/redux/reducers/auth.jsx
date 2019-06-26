@@ -1,6 +1,6 @@
 import {
     LOGIN_SUCCESS,
-    LOGIN_FAIL
+    LOG_OUT
 } from '../constants'
 import { setHeaderJWT } from '../../services/httpService'
 
@@ -25,6 +25,17 @@ export default function(state = initialState, action){
                      loading: false,
                      user: payload.user
                 }
+        case LOG_OUT:
+                localStorage.removeItem('token')
+                return {
+                   // ...state,
+                    //token: null,
+                   // isAuthenticated: false,
+                   // user: null,
+                   // loading: false
+                   state: undefined
+               }
+
         default: return state
     }
 }

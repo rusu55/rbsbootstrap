@@ -1,6 +1,6 @@
 import {
     LOGIN_SUCCESS,
-    LOGIN_FAIL
+    LOG_OUT
 } from '../constants'
 
 import http from '../../services/httpService'
@@ -20,4 +20,11 @@ export const login = ({email, password}) => async dispatch =>{
    catch(err){
 
    }
+}
+
+export const signOut = (history) => dispatch =>{
+    dispatch({
+        type: LOG_OUT
+    })
+    history.push('/login')
 }

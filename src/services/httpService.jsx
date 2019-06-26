@@ -9,7 +9,9 @@ axios.interceptors.response.use(null, error =>{
 
   if (expectedError) {
     //logger.log(error);
-    toastr.error("An unexpected error occurrred.");
+    toastr.error(error.response.data);
+  } else {
+    toastr.error('Server Error!')
   }
 
   return Promise.reject(error)
