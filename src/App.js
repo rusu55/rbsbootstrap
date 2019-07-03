@@ -7,6 +7,7 @@ import store from "./redux/store/"
 import Routes from './routes/'
 import TopNavBar from './components/commons/NavBar'
 import SideNavBar from './components/commons/SideBar'
+import Alert from './components/commons/elements/alert'
 
 function App() {
   return (
@@ -16,7 +17,10 @@ function App() {
             <SideNavBar />
           <div className="main">
               <TopNavBar />  
-              <Routes/>
+                <main className="content">
+                <Alert />
+                  <Routes/>
+                </main>             
               <ReduxToastr
                 timeOut={5000}
                 newestOnTop={true}
