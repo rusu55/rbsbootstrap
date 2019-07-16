@@ -1,8 +1,12 @@
-import { GET_LEADS, CREATE_LEAD } from '../constants'
+import { GET_LEADS, CREATE_LEAD, GET_LEAD_DETAILS, EDIT_LEAD } from '../constants'
 import { pageSize } from '../../config.json'
 
 const initialState = {
     lead: null,
+    leadDetails: {
+            lead: null,
+            notes: null
+        },
     loading: true, 
     itemsCount : 0,
     currentPage : 1,
@@ -24,6 +28,10 @@ export default function(state = initialState, action){
                 loading: false,
                 error : null,
             }
+        case EDIT_LEAD:
+            return {
+                ...state
+            }
         case GET_LEADS:
             return {
                 ...state,
@@ -35,6 +43,12 @@ export default function(state = initialState, action){
                 sortBy: payload.path,
                 orderBy: payload.order
             }
+        case GET_LEAD_DETAILS:
+            return {
+            ...state,
+            loading: false,
+            leadDetails: { lead: payload.lead, notes: payload.notes} 
+        }
         default: return state
     }
 }

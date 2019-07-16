@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Moment from 'moment'
 import PropTypes from 'prop-types'
 
@@ -45,7 +46,7 @@ const LeadsTable = ({leads, onSortChange, sortBy, orderBy}) => {
                 <tbody>
                     {leads.map(lead => (
                             <tr key ={ lead._id }>
-                                <td>{lead.name}</td>
+                                <td><Link to={`/leadDetails/${lead._id}`}>{lead.name}</Link></td>
                                 <td>{lead.email}</td>
                                 <td>{Moment(lead.weddingDate).format('YYYY/MM/DD')}</td>
                                 <td>{lead.details.venue}</td>
