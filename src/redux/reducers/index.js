@@ -5,6 +5,7 @@ import alert from './alert'
 import sidebar from './sideBar'
 import leads from './lead'
 import task from './task'
+import notes from './note'
 
 export default combineReducers({
     toastr,
@@ -12,5 +13,6 @@ export default combineReducers({
     alert,
     sidebar,
     leads,
-    task
+    task,
+    notes
 })

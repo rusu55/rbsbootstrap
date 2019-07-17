@@ -32,7 +32,7 @@ import ProfileTab from './components/ProfileTab';
                    <ProfileTab details={lead} onAction={handleAction} />
                 </Col>
                 <Col md="8" xl="9">
-                    <CardsTabs notes={notes} onAction={handleAction} />
+                    <CardsTabs leadId={match.params.id} onAction={handleAction} />
                     <ContractTab />
                 </Col>
            </Row>

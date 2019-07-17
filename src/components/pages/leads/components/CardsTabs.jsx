@@ -15,6 +15,9 @@ import {
         Badge
     } from 'reactstrap'
 
+import { connect } from 'react-redux'
+import AddNewNote from './modals/AddNewNote'
+import { getNotes } from '../../../../redux/actions/notes'
 
 class CardsTabs extends Component {
     state = {
@@ -28,8 +31,12 @@ class CardsTabs extends Component {
         }
     }
     
+    componentDidMount(){
+        this.props.getNotes(this.props.leadId)
+    }
+    
     render(){
-        console.log(this.props.notes)
+        
         return(
             <Card>
                 <CardHeader>
@@ -66,7 +73,8 @@ class CardsTabs extends Component {
                 <CardBody>
                     <TabContent activeTab={this.state.activeTab}>
                             <TabPane tabId="1">
-                                         {this.props.notes ? (                                                                              
+                                        <AddNewNote leadId={this.props.leadId} />
+                                         {this.props.notes.length > 0 ? (                                                                              
                                             this.props.notes.map(note=>(
                                                 <Fragment  key={note._id}>
                                                     <Media>
@@ -85,9 +93,10 @@ class CardsTabs extends Component {
                                                     <hr />
                                                 </Fragment>
                                           ))                                                                       
-                                    ) : (<span>Nothing</span>)}                    
+                                    ) : (<span>No Notes Yet!</span>)}                    
                                 
                             </TabPane>
+                         
                     </TabContent>
                     <TabContent activeTab={this.state.activeTab}>
                             <TabPane tabId="2">
@@ -117,4 +126,9 @@ class CardsTabs extends Component {
     }
 }
 
-export default CardsTabs
+const mapStateToProps = state =>({
+    auth : state.auth,
+    notes: state.notes.notes
+})
+
+export default connect(mapStateToProps, {getNotes})(CardsTabs)
