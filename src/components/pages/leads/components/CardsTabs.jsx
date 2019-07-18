@@ -17,7 +17,8 @@ import {
 
 import { connect } from 'react-redux'
 import AddNewNote from './modals/AddNewNote'
-import { getNotes } from '../../../../redux/actions/notes'
+import EditNote from './modals/EditNote'
+import { getNotes, deleteNote } from '../../../../redux/actions/notes'
 
 class CardsTabs extends Component {
     state = {
@@ -80,8 +81,8 @@ class CardsTabs extends Component {
                                                     <Media>
                                                         <Media body >
                                                             <small className="float-right">
-                                                                 <Badge color="warning" className="mr-1 mb-1" style={{ cursor: "pointer" }} onClick={()=>this.props.onAction('Edit Note')}>Edit</Badge>
-                                                                 <Badge color="danger" className="mr-1 mb-1" style={{ cursor: "pointer" }} onClick={()=>this.props.onAction('Delete Note')}>Delete</Badge>
+                                                                 <EditNote note={note} />
+                                                                 <Badge color="danger" className="mr-1 mb-1" style={{ cursor: "pointer" }} onClick={()=>this.props.deleteNote(note._id)}>Delete</Badge>
                                                             </small>
                                                             {note.details}
                                                             <br />
@@ -131,4 +132,4 @@ const mapStateToProps = state =>({
     notes: state.notes.notes
 })
 
-export default connect(mapStateToProps, {getNotes})(CardsTabs)
+export default connect(mapStateToProps, {getNotes, deleteNote})(CardsTabs)
