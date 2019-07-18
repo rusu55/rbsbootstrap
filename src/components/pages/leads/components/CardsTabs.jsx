@@ -14,6 +14,7 @@ import {
         Media,
         Badge
     } from 'reactstrap'
+import { Trash } from 'react-feather'
 
 import { connect } from 'react-redux'
 import AddNewNote from './modals/AddNewNote'
@@ -82,7 +83,7 @@ class CardsTabs extends Component {
                                                         <Media body >
                                                             <small className="float-right">
                                                                  <EditNote note={note} />
-                                                                 <Badge color="danger" className="mr-1 mb-1" style={{ cursor: "pointer" }} onClick={()=>this.props.deleteNote(note._id)}>Delete</Badge>
+                                                                 <Trash width={18} height={18} className="mr-1 mb-1" style={{ cursor: "pointer" }} onClick={()=>this.props.deleteNote(note._id)} />
                                                             </small>
                                                             {note.details}
                                                             <br />

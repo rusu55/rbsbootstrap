@@ -6,9 +6,10 @@ import {
     ModalHeader,
     ModalBody,
     ModalFooter,
-    Button, 
-    Badge
+    Button    
     } from 'reactstrap'
+
+    import { FileText } from 'react-feather'
 
 import { connect } from 'react-redux'
 import { editCurrentNote } from '../../../../../redux/actions/notes'
@@ -55,17 +56,16 @@ class EditNote extends Form{
     render(){
         return(
                 <Fragment>
-                    <Badge color="warning" className="mr-1 mb-1" style={{ cursor: "pointer" }} onClick={()=>this.populateForm()}>Edit Note</Badge>
+                    <FileText width={18} height={18} className="mr-1 mb-1" style={{ cursor: "pointer" }} onClick={()=>this.populateForm()} />
                
                 <Modal isOpen={this.state.modal}>
                     <ModalHeader>
                         Edit Note
                     </ModalHeader>
-                    <ModalBody>
-                        <p className="mb-0">dsdsds</p>
+                    <ModalBody>                        
                         <form onSubmit={this.handleSubmit}>
-                            {this.renderInput("details" , "New Note",  "form-group")}
-                            {this.renderButton("Add Note" ,"form-group")}
+                            {this.renderInput("details" , "Edit Note",  "form-group")}
+                            {this.renderButton("Update Note" ,"form-group")}
                         </form>
                     </ModalBody>
                     <ModalFooter>
