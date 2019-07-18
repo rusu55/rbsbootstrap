@@ -50,4 +50,6 @@ export const editCurrentNote = (data, noteId) => async dispatch =>{
         type: UPDATE_NOTE,
         payload: result.data
     })
+
+    dispatch(setAlert('Note Updated!', 'warning'))
 }

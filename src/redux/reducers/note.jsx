@@ -26,12 +26,9 @@ export default function(state=initialState, action){
                
             }
         case UPDATE_NOTE:
-            const index = state.notes.findIndex(obj => obj._id === payload._id)
-            console.log(index)
             return{
-                ...state
-                //notes: state.notes.findIndex(obj => obj._id === payload._id) > -1 ? 
-                       // state.notes
+                ...state,
+                notes: state.notes.map(note => note._id === payload._id ? {...note,  details: payload.details} : note)
             }
         default:
              return state
