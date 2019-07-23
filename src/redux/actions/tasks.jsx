@@ -14,6 +14,16 @@ export const getTasks = () => async dispatch =>{
     })
 }
 
+export const getTasksByOwner = ( id ) => async dispatch =>{
+    const apiEndPoint = apiUrl + `tasks/owner/${id}`
+
+    const result = await http.get(apiEndPoint)
+    dispatch({
+        type: GET_TASKS,
+        payload: result.data
+    })
+}
+
 export const setTask = id => async dispatch =>{
     const apiEndPoint = apiUrl + `tasks/${id}`
 

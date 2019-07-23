@@ -20,6 +20,7 @@ import { connect } from 'react-redux'
 import AddNewNote from './modals/AddNewNote'
 import EditNote from './modals/EditNote'
 import { getNotes, deleteNote } from '../../../../redux/actions/notes'
+import { getTasksByOwner } from '../../../../redux/actions/tasks'
 
 class CardsTabs extends Component {
     state = {
@@ -35,10 +36,11 @@ class CardsTabs extends Component {
     
     componentDidMount(){
         this.props.getNotes(this.props.leadId)
+        this.props.getTasksByOwner(this.props.leadId)
     }
     
     render(){
-        
+        console.log(this.props)
         return(
             <Card>
                 <CardHeader>
@@ -102,13 +104,26 @@ class CardsTabs extends Component {
                     </TabContent>
                     <TabContent activeTab={this.state.activeTab}>
                             <TabPane tabId="2">
-                                <CardTitle tag="h5">Tasks to Complete</CardTitle>
-                                <CardText>
-                                Some quick example text to build on the card title and make up
-                                 the bulk of the card's content.
-                                 Some quick example text to build on the card title and make up
-                                 the bulk of the card's content.
-                                </CardText>
+                                  {this.props.tasks.tasks.length > 0 ? 
+                                 (
+                                     this.props.tasks.tasks.map(task=>(
+                                         <Fragment key={task._id}>
+                                             <Media body>
+                                                    <small className="float-right">                                                    
+                                                      <EditNote task={task} />
+                                                       <Trash width={18} height={18} className="mr-1 mb-1" style={{ cursor: "pointer" }} onClick={()=>this.props.deleteNote(task._id)} />                                                                
+                                                    </small>
+                                                            {task.description}
+                                                            <br />
+                                                            <small className="text-muted">{Moment(task.taskDate).format('YYYY/MM/DD')}</small>
+                                                            <br />
+                                             </Media>
+                                         </Fragment>
+                                     ))
+                                 ) 
+                                    :
+                                 (<span>No Tasks Found!</span>)}
+                                     
                             </TabPane>
                     </TabContent>
                     <TabContent activeTab={this.state.activeTab}>
@@ -130,7 +145,8 @@ class CardsTabs extends Component {
 
 const mapStateToProps = state =>({
     auth : state.auth,
-    notes: state.notes.notes
+    notes: state.notes.notes,
+    tasks: state.task
 })
 
-export default connect(mapStateToProps, {getNotes, deleteNote})(CardsTabs)
+export default connect(mapStateToProps, {getNotes, deleteNote, getTasksByOwner})(CardsTabs)
